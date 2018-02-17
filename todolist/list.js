@@ -23,6 +23,10 @@ router.post('/list', (req, res, next) => {
 })
 
 router.put('/list/:id', function (req, res) {
+  List.findOneAndUpdate(req.params.id, req.body.list)
+})
+
+router.put('/list/:id', function (req, res) {
   List.findById(req.params.id, (err, list) => {
     list.description = req.body.list.description || list.description
     list.url = req.body.list.url || list.url
