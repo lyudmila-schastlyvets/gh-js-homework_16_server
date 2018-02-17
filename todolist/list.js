@@ -23,7 +23,16 @@ router.post('/list', (req, res, next) => {
 })
 
 router.put('/list/:id', function (req, res) {
-  List.findOneAndUpdate(req.params.id, req.body)
+  List.findOneAndUpdate({ "_id": req.params.id}, {
+    date: req.body.list.date,
+    url: req.body.list.url,
+    description: req.body.list.description
+  }, { new: true }, function (err, doc) {
+    if (err) {
+      res.status(400).json(err)
+    }
+    res.status(200).json(doc)
+  })
 })
 
 router.delete('/list/:id', function (req, res) {
