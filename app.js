@@ -5,7 +5,7 @@ const path = require('path')
 const app = express()
 
 const config = require('./config')
-const list = require('./todolist/list')
+const event = require('./eventlist/event')
 
 require('./db')
 
@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/api/v1', list)
+app.use('/api/v1', event)
 
 // error handling
 app.use((req, res, next) => {

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const todolistSchema = new mongoose.Schema({
-  description: String,
+  title: String,
   date: String,
-  url: String
+  location: String
 })
 
-module.exports = mongoose.model('List', todolistSchema)
+module.exports = mongoose.model('Event', todolistSchema)
